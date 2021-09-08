@@ -168,8 +168,6 @@ def algos(args):
 			empirical[choosen] = float(sum_rewards[choosen])/float(times[choosen])
  	
 		for t in range(n,hz):
-			if(t%100 == 0):
-				print(t)
 			ucb = []
 			th = math.log(t) + 3*math.log(math.log(t))
 			ucb = list(map(partial(binsearch,th=th),empirical,times))
@@ -244,7 +242,7 @@ def algos(args):
 			reward = new_reward(bandits[choosen],rewardvals)
 			rew += reward
 			
-			if(reward >= th):
+			if(reward > th):
 				s[choosen] += 1
 			else:
 				f[choosen] += 1
@@ -271,8 +269,10 @@ np.random.seed(int(args.randomSeed))
 
 reg,high = algos(args)
 
-high = int(high)
+print(args.instance,args.algorithm,args.randomSeed,args.epsilon,args.scale,args.horizon,reg,high,sep=", ")
 
-print(f"{args.instance}, {args.algorithm}, {args.randomSeed}, {args.epsilon}, {args.scale}, {args.threshold}, {args.horizon}, {reg}, {high}")
+
+
+# print(args.instance,args.algorithm,args.randomSeed,args.epsilon,args.scale,args.threshold,args.horizon,args.reg,args.high,sep=", ")
 
 	
