@@ -1,2 +1,5 @@
-python3 siba/wrap.py
-python3 akshat/wrap.py
+cd siba
+python3 wrap.py
+cd ..
+cd akshat
+python3 wrap.py
