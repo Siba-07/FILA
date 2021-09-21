@@ -217,14 +217,10 @@ def algos(args):
 			reward = new_reward(bandits[choosen],rewardvals)
 			rew += reward
 
-			times[choosen] += 1
-			empirical[choosen] = empirical[choosen]*(times[choosen]-1) + reward 
-			empirical[choosen] = empirical[choosen]/float(times[choosen])
+			
+			s[choosen] += reward
+			f[choosen] = f[choosen] + (1-reward)
 
-			if(reward >= empirical[choosen]):
-				s[choosen] += 1
-			else:
-				f[choosen] += 1
 		reg = maximum_rew - rew 
 
 	elif(args.algorithm == "alg-t4"):
@@ -269,7 +265,7 @@ np.random.seed(int(args.randomSeed))
 
 reg,high = algos(args)
 
-print(args.instance,args.algorithm,args.randomSeed,args.epsilon,args.scale,args.horizon,reg,high,sep=", ")
+print(args.instance,args.algorithm,args.randomSeed,args.epsilon,args.scale,args.threshold,args.horizon,reg,high,sep=", ")
 
 
 
