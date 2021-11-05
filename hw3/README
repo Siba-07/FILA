@@ -1,0 +1,15 @@
+For task1 
+----------
+To train - 
+python mountain_car.py --task T1 --train 1
+To test - 
+python mountain_car.py --task T1 --train 0
+
+
+
+For task2
+----------
+To train 
+python mountain_car.py --task T2 --train 1
+To test
+python mountain_car.py --task T2 --train 0
